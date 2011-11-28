@@ -4,6 +4,10 @@
 *   Project: pySAXtoList
 */
 
+
+STATUS: NOT USABLE RIGHT NOW, STILL IN THE PROCESS OF UPLOADING THE PROJECT STRUCTURE TO GIT...
+
+
 This is a small python wrapper written on top of the SAX parser to read an XML file
 and convert it into a list of dictionaries and lists.
 
