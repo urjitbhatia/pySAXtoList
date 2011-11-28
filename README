@@ -1,0 +1,64 @@
+/*
+*   Author: Urjit Singh Bhatia
+*   Email:  urjitsb87@gmail.com
+*   Project: pySAXtoList
+*/
+
+This is a small python wrapper written on top of the SAX parser to read an XML file
+and convert it into a list of dictionaries and lists.
+
+If there is multiplicity at any level, it will become a list. All attributes and values 
+are stored in a dictionary format.
+
+Restrictions:
+
+1. Order of processed elements does not matter
+2. Currently, attributes are not handled, this will be fixed in the newer versions.
+
+Example:
+
+XML from:
+http://msdn.microsoft.com/en-us/library/windows/desktop/ms762271(v=vs.85).aspx
+
+Small XML String:
+<?xml version="1.0"?>
+<catalog>
+   <book id="bk111">
+      <author>O'Brien, Tim</author>
+      <title>MSXML3: A Comprehensive Guide</title>
+      <genre>Computer</genre>
+      <price>36.95</price>
+      <publish_date>2000-12-01</publish_date>
+      <description>The Microsoft MSXML3 parser is covered in 
+      detail, with attention to XML DOM interfaces, XSLT processing, 
+      SAX and more.</description>
+   </book>
+   <book id="bk112">
+      <author>Galos, Mike</author>
+      <title>Visual Studio 7: A Comprehensive Guide</title>
+      <genre>Computer</genre>
+      <price>49.95</price>
+      <publish_date>2001-04-16</publish_date>
+      <description>Microsoft Visual Studio 7 is explored in depth,
+      looking at how Visual Basic, Visual C++, C#, and ASP+ are 
+      integrated into a comprehensive development 
+      environment.</description>
+   </book>
+</catalog>
+
+Output:
+
+Time taken:  0.00969494726285
+
+[{u'book': {u'author': u'Galos, Mike',
+            u'description': u'Microsoft Visual Studio 7 is explored in depth,looking at how Visual Basic, Visual C++, C#, and ASP+ areintegrated into a comprehensive developmentenvironment.',
+            u'genre': u'Computer',
+            u'price': u'49.95',
+            u'publish_date': u'2001-04-16',
+            u'title': u'Visual Studio 7: A Comprehensive Guide'}},
+ {u'book': {u'author': u"O'Brien, Tim",
+            u'description': u'The Microsoft MSXML3 parser is covered indetail, with attention to XML DOM interfaces, XSLT processing,SAX and more.',
+            u'genre': u'Computer',
+            u'price': u'36.95',
+            u'publish_date': u'2000-12-01',
+            u'title': u'MSXML3: A Comprehensive Guide'}}]
