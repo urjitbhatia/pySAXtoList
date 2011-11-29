@@ -19,6 +19,10 @@ Restrictions:
 1. Order of processed elements does not matter
 2. Currently, attributes are not handled, this will be fixed in the newer versions.
 
+Dependencies:
+
+1. Python SAX library
+
 Example:
 
 XML from:
