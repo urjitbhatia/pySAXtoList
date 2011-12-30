@@ -18,7 +18,7 @@ from types import ListType, DictionaryType
 class Data():
     masterList = []
 
-class GrubHubSaxParser(xml.sax.ContentHandler):
+class SaxToListParser(xml.sax.ContentHandler):
 
     def __init__(self, data):
         self.root = None
@@ -89,18 +89,26 @@ class GrubHubSaxParser(xml.sax.ContentHandler):
     def characters(self, content):
         self.currentCharacters += content.strip()
 
-def main(sourceFile):
-    source = open(sourceFile)
+def main(sourceLocation, url=False):
+    if url:
+        feed = urllib.urlopen(sourceLocation)
+        source = feed.read()
+    else:
+        source = open(sourceLocation)
     data = Data()
     t = time.clock()
     print "Start: ", t
 
-    xml.sax.parseString(source, handler=GrubHubSaxParser(data))
+    xml.sax.parseString(source, handler=SaxToListParser(data))
     print "Time taken: ", time.clock() - t
     print "The final dict is: ", len(data.masterList)
     pprint(data.masterList)
 
 if __name__ == "__main__":
     print "Parsing..."
-    main(sourceFile='your-file-path-here')
+#    main(sourceFile='your-file-path-here')
+    #===========================================================================
+    # Example feed from the hplus magazine rss...
+    #===========================================================================
+    main(sourceLocation='http://hplusmagazine.com/feed/rss/', url=True)
 
